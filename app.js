@@ -1,11 +1,23 @@
 const express = require("express");
 const cors = require("cors");
-const Datastore = require("nedb");
+const fs = require("fs");
 
 const app = express();
-const db = new Datastore({ filename: "./storage.db", autoload: true });
 
 app.use(cors());
+
+function readDatabase() {
+	const data = fs.readFileSync("./db.json", "utf8");
+	return data ? JSON.parse(data) : [];
+}
+function writeDatabase(data) {
+	let currentList = readDatabase();
+	currentList.push(data);
+	fs.writeFileSync("./db.json", JSON.stringify(currentList, null, 2), {
+		encoding: "utf8",
+		flag: "w",
+	});
+}
 
 // Utility Functions
 const fibonacci = (number, data = {}) => {
@@ -34,18 +46,22 @@ app.get("/calculate/:number", validateNumber, async (req, res) => {
 	const result = fibonacci(req.number);
 	const obj = { number: req.number, result, createdDate: Date.now() };
 
-	db.insert(obj, (err) => {
-		if (err) return res.status(500).send(err);
+	try {
+		writeDatabase(obj);
 		res.json(obj);
-	});
+	} catch (err) {
+		return res.status(500).send(err);
+	}
 });
 
 app.get("/results", async (req, res) => {
 	await wait(600);
-	db.find({}, (err, docs) => {
-		if (err) return res.status(500).send(err);
-		res.json({ results: docs });
-	});
+	try {
+		const data = readDatabase();
+		res.json({ results: data });
+	} catch (err) {
+		return res.status(500).send(err);
+	}
 });
 
 // Start server

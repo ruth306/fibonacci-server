@@ -1,0 +1,30 @@
+[
+  {
+    "number": 5,
+    "result": 5,
+    "createdDate": 1742283096331,
+    "_id": "KdxEIzfrJPNJQcko"
+  },
+  {
+    "number": 20,
+    "result": 6765,
+    "createdDate": 1742283616069,
+    "_id": "cHHdtBqun7d6EoKM"
+  },
+  {
+    "number": 12,
+    "result": 144,
+    "createdDate": 1742283630388,
+    "_id": "I1M1pbwQiPnNX1LS"
+  },
+  {
+    "number": 3,
+    "result": 2,
+    "createdDate": 1744031026228
+  },
+  {
+    "number": 7,
+    "result": 13,
+    "createdDate": 1744031035869
+  }
+]
