@@ -64,6 +64,7 @@ app.get("/results", async (req, res) => {
 	}
 });
 
+
 // Start server
 app.listen(3000, () => {
 	console.log(`App listening on port 3000`);

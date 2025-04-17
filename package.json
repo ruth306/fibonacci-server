@@ -1,7 +1,7 @@
 {
 	"name": "fibonnaci-project-server",
 	"version": "1.0.0",
-	"description": "",
+	"description": "This is a server that calculates Fibonacci series",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -13,5 +13,14 @@
 		"cors": "^2.8.5",
 		"express": "^4.17.1",
 		"nedb": "^1.8.0"
-	}
+	},
+	"devDependencies": {},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Grunitech-frontend-examples/fibonacci-server.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Grunitech-frontend-examples/fibonacci-server/issues"
+	},
+	"homepage": "https://github.com/Grunitech-frontend-examples/fibonacci-server#readme"
 }
